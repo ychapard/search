@@ -62,7 +62,11 @@ public function searchConfiguration()
 public function initialize(array $config)
 {
     ...
-    $this->addBehavior('Search.Search');
+    $this->addBehavior('Search.Search',[
+        'field' => ['name','title','short_text'],
+        'dest_field' => 'search_data',
+        'replacement' => ' '
+    ]);
     ...
 }
 ```
