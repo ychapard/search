@@ -1,6 +1,9 @@
 # CakePHP Search
 
 Search provides a search module for CakePHP applications.
+Added :
+* A field ( search_data default) is automatically filled with the values ​​of the fields you want to index
+* Search word is separated into words (space char) so search is base on multiples words
 
 ## Requirements
 
