@@ -35,19 +35,20 @@ class SearchBehavior extends Behavior
      * @return [type]         [description]
      */
     public function searchable(Entity $entity) {
-        $config = $this->config();
-        $value = '';
-        if ( is_array($config['field']) ){
-            foreach($config['field'] as $field_name) {
-                $value .= $entity->get($field_name).$config['replacement'];
+        if (!empty($config['field']){
+            $config = $this->config();
+            $value = '';
+            if ( is_array($config['field']) ){
+                foreach($config['field'] as $field_name) {
+                    $value .= $entity->get($field_name).$config['replacement'];
+                }
+                $value = rtrim($value,$config['replacement']);
+            } else {
+                $value = $entity->get($config['field']);
             }
-            $value = rtrim($value,$config['replacement']);
-        } else {
-            $value = $entity->get($config['field']);
+            //echo $config['dest_field']." => ".strtolower(Inflector::slug($value, $config['replacement']));
+            $entity->set($config['dest_field'], strtolower(Inflector::slug($value, $config['replacement'])));
         }
-
-        //echo $config['dest_field']." => ".strtolower(Inflector::slug($value, $config['replacement']));
-        $entity->set($config['dest_field'], strtolower(Inflector::slug($value, $config['replacement'])));
     }
 
     /**
