@@ -35,7 +35,7 @@ class SearchBehavior extends Behavior
      * @return [type]         [description]
      */
     public function searchable(Entity $entity) {
-        if (!empty($config['field']){
+        if (!empty($config['field'])){
             $config = $this->config();
             $value = '';
             if ( is_array($config['field']) ){
